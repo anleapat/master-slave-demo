@@ -76,7 +76,6 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
     <!--    mybatis generator代码生成插件-->
     <build>
         <plugins>
