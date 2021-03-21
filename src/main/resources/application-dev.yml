@@ -1,0 +1,37 @@
+#开发环境配置信息
+spring:
+
+  redis: #redis配置
+    port: 6379
+    host: 192.168.56.107
+    password: 
+    
+  datasource: #默认数据源配置
+    password: anleapat
+    url: 'jdbc:mysql://192.168.56.107:3306/parking5?useUnicode=true&characterEncoding=utf-8'
+    username: admin
+    
+  data: 
+    mongodb: 
+      uri: mongodb://192.168.56.201:28017/parking
+      
+custom:
+  datasource: 
+    names: slave
+    slave: 
+      password: anleapat
+      url: 'jdbc:mysql://192.168.56.107:3306/parking5?useUnicode=true&characterEncoding=utf-8'
+      username: admin
+      driver-class-name: 'com.mysql.jdbc.Driver'
+
+      
+server: #web服务配置
+  context-path: /parking
+  port: 8092
+    
+logging: #日志配置
+  config: 'classpath:x_logback.xml' #指定日志配置文件
+
+redis: 
+  port: 6379
+  host: 192.168.56.107

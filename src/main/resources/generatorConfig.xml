@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动jar包位置-->
+    <classPathEntry location="D:\workspaces\mysql-connector-java-5.1.30.jar" />
+    
+    <context id="Msql2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+             <property name="suppressDate" value="true"/>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>
+         
+         <!--数据库链接地址账号密码-->
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.0.2.4:3306/parking5" userId="admin" password="yy3B5uYf5f34BjV89"></jdbcConnection>
+         
+         <javaTypeResolver>
+             <property name="forceBigDecimals" value="false"/>
+         </javaTypeResolver>
+         
+         <!--生成entity类存放位置-->
+         <javaModelGenerator targetPackage="com.sintech.parking.modules.parking.entity" targetProject="com.sintech.parking.entity">
+             <property name="trimStrings" value="true"/>
+             <property name="enableSubPackages" value="true"/>
+         </javaModelGenerator>
+         
+         <!--生成映射文件存放位置-->
+         <sqlMapGenerator targetPackage="mappers.parking" targetProject="com.sintech.parking.service/src/main/resources">
+             <property name="enableSubPackages" value="true"/>
+         </sqlMapGenerator>
+         
+         <!--生成Dao类存放位置-->
+         <javaClientGenerator type="XMLMAPPER" targetPackage="com.sintech.parking.modules.parking.mapper" targetProject="com.sintech.parking.service">
+             <property name="enableSubPackages" value="true"/>
+         </javaClientGenerator>
+         
+         <!--生成对应表及类名-->
+<!--    <table tableName="member" domainObjectName="Member" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking" domainObjectName="ShareParking" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_amount" domainObjectName="ShareParkingAmount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_charge" domainObjectName="ShareParkingCharge" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_lot" domainObjectName="ShareParkingLot" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_lot_like" domainObjectName="ShareParkingLotLike" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_lot_remark" domainObjectName="ShareParkingLotRemark" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="share_parking_lot_floor_plane" domainObjectName="ParkingLotFloorPlane" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_lot" domainObjectName="ParkingLot" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking" domainObjectName="Parking" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_amount" domainObjectName="ParkingAmount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_charge" domainObjectName="ParkingCharge" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_lot_remark" domainObjectName="ParkingLotRemark" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="mb_vehicle" domainObjectName="MbVehicle" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_order" domainObjectName="ParkingOrder" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="parking_order_remark" domainObjectName="ParkingOrderRemark" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> -->
+		<table tableName="parking_violation" domainObjectName="ParkingViolation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+     </context>
+     
+</generatorConfiguration>

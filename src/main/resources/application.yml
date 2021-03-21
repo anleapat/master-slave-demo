@@ -1,0 +1,69 @@
+#项目启动时,可通过外部指定配置文件 java -jar demo.jar --spring.config.location=/opt/config/application.yml 配置使用哪个环境的配置文件
+spring:
+  profiles: 
+    active: dev     #开发环境
+#    active: test   #测试环境
+#    active: prod   #生产环境
+
+#message-source
+  messages: 
+    basename: i18n/messages
+    cache-seconds: -1
+    encoding: UTF-8
+    
+  jackson:
+    time-zone: 'Asia/Chongqing' #时区设置 
+    date-format: 'yyyy-MM-dd HH:mm:ss' #时间格式化 
+    
+  datasource:  #下面为连接池的补充设置，应用到上面所有数据源中
+    minIdle: 20
+    validationQuery: 'SELECT 1 FROM DUAL'
+    initialSize: 10
+    maxWait: 60000  # 配置获取连接等待超时的时间
+    filters: 'stat,wall,log4j' # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    logSlowSql: true
+    type: com.alibaba.druid.pool.DruidDataSource #数据源
+    jdbc-interceptors: 'ConnectionState;SlowQueryReport(threshold=5000)' #展示慢查询
+    testOnBorrow: false
+    testWhileIdle: true
+    minEvictableIdleTimeMillis: 300000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    testOnReturn: false
+    driver-class-name: 'com.mysql.jdbc.Driver'
+    maxActive: 60
+  
+  http: #设置web服务编码
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+      
+  redis: #redis配置
+    pool:
+      max-idle: 10 
+      min-idle: 5
+      max-active: 8
+      max-wait: -1
+      
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  session:
+    timeout: 600 #秒
+  max-http-header-size: 10000000  
+  
+swagger: #配置接口文档生成工具扫描路径
+  basepackage: 'com.sintech.parking'
+  
+redis: 
+  pool: 
+    minIdle: 5
+    maxIdle: 10
+    maxTotal: 10
+    
+interceptorParam: #####完全公开的url
+  user: 
+    publicUrls: 
+      - '/u/'
+      - '/sys/'
+      

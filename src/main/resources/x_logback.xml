@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/catalina.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/catalina.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<springProfile name="default">
+		<logger name="org.springframework" level="INFO" />
+		<logger name="com.sintech" level="DEBUG" />
+		<!--log4jdbc -->
+		<logger name="jdbc.sqltiming" level="DEBUG" />
+		<logger name="org.springframework.data.mongodb.core.MongoTemplate" level="DEBUG" />
+	</springProfile>
+
+	<springProfile name="dev">
+		<logger name="org.springframework" level="INFO" />
+		<logger name="com.sintech" level="DEBUG" />
+		<!--log4jdbc -->
+		<logger name="jdbc.sqltiming" level="DEBUG" />
+		<logger name="org.springframework.data.mongodb.core.MongoTemplate" level="DEBUG" />
+	</springProfile>
+
+	<springProfile name="test">
+		<logger name="org.springframework" level="INFO" />
+		<logger name="com.sintech" level="DEBUG" />
+		<!--log4jdbc -->
+		<logger name="jdbc.sqltiming" level="DEBUG" />
+		<logger name="org.springframework.data.mongodb.core.MongoTemplate" level="DEBUG" />
+	</springProfile>
+
+	<springProfile name="prod">
+		<logger name="org.springframework" level="INFO" />
+		<logger name="com.sintech" level="INFO" />
+		<!--log4jdbc -->
+		<logger name="jdbc.sqltiming" level="INFO" />
+		<logger name="org.springframework.data.mongodb.core.MongoTemplate" level="INFO" />
+	</springProfile>
+
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>
